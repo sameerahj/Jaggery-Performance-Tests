@@ -1,0 +1,14 @@
+#!/bin/bash
+
+conc=100
+loop=100
+
+cd ./plans
+sed 's/_loop_/'${loop[$i]}'/g' JSP_get.jmx > ./jspTest.jmx
+sed 's/_conc_/'${conc[$i]}'/g' jspTest.jmx > jsp_get_${conc}.jmx
+rm jspTest.jmx
+cd ../apache-jmeter-2.7/bin/
+sh ./jmeter.sh -n -t ../../plans/jsp_get_${conc}.jmx -l ../../results/jsp/get_${conc}.jtl
+cd ../../plans
+
+

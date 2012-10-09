@@ -1,0 +1,14 @@
+#!/bin/bash
+
+conc=100
+loop=100
+
+cd ./plans
+sed 's/_loop_/'${loop}'/g' JAG_readFile.jmx > ./jagTest.jmx
+sed 's/_conc_/'${conc}'/g' jagTest.jmx > jag_file_${conc}.jmx
+rm jagTest.jmx
+cd ../apache-jmeter-2.7/bin/
+sh ./jmeter.sh -n -t ../../plans/jag_file_${conc}.jmx -l ../../results/jag/file_${conc}.jtl
+cd ../../plans
+
+

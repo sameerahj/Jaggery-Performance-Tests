@@ -1,0 +1,27 @@
+#!/bin/bash
+
+i=0
+
+conc[0]=50
+conc[1]=100
+conc[2]=250
+conc[3]=500
+
+loop[0]=200
+loop[1]=100
+loop[2]=40
+loop[3]=20
+
+
+cd ./plans
+while test $i != 4
+do
+sed 's/_loop_/'${loop[$i]}'/g' JSP_get.jmx > ./jspTest.jmx
+sed 's/_conc_/'${conc[$i]}'/g' jspTest.jmx > jsp_get_${conc[$i]}.jmx
+rm jspTest.jmx
+cd ../apache-jmeter-2.7/bin/
+sh ./jmeter.sh -n -t ../../plans/jsp_get_${conc[$i]}.jmx -l ../../results/jsp/get_${conc[$i]}.jtl
+i=`expr $i + 1`
+cd ../../plans
+done
+
