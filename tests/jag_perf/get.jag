@@ -1,0 +1,6 @@
+<%
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "http://localhost/common/test.php");
+	xhr.send();
+	print(xhr.responseText);
+%>

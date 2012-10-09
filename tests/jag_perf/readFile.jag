@@ -1,0 +1,6 @@
+<%
+	var file = new File("/sample.txt");
+	file.open("r");
+	print(file.getStream());
+	file.close();
+%>

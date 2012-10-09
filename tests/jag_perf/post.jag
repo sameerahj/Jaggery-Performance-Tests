@@ -1,0 +1,4 @@
+<%
+    var page = post("http://localhost/common/welcome.php",{"name":"WSO2","address":"59, Flower road, Colombo 7"});
+    print(page);
+%>

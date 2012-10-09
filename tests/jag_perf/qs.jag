@@ -1,0 +1,35 @@
+<html>
+ <body>
+ <%
+ 	function qsort(a) {
+    		if (a.length < 2) return a;
+    		var left = [], right = [], pivot = a[0];
+		var sameAsPivot=0;
+		
+    		for (var i = 0; i < a.length; i++) {
+			if(a[i] < pivot)
+				left.push(a[i]);
+			else if (a[i] > pivot)
+				right.push(a[i]);
+			else
+				sameAsPivot++;
+    		}
+ 		left=qsort(left);
+		for(var i=0;i<sameAsPivot;i++){
+			left=left.concat(pivot);	
+		}
+		right=qsort(right);
+    		return left.concat(right);
+	}
+	var seq=[];
+	for(var i=0;i<100;i++){
+		seq[i]=Math.floor(Math.random()*201);
+	}
+	var result=qsort(seq);
+	for(var i=0; i<result.length; i++){
+		print(result[i]+", ");
+	}
+	
+ %>
+ </body>
+</html>
